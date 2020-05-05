@@ -1,10 +1,6 @@
 # Movies and family
+- Projet crée en suivant le cours OpenClassRooms : https://openclassrooms.com/fr/courses/4902061-developpez-une-application-mobile-react-native
+- Utilisation de l'API The Movie Database (https://developers.themoviedb.org/3/getting-started/introduction)
 
-## Pour créer un projet react-native 
-``react-native init <Nom du projet>``
-
-## Pour lancer le projet 
+# Pour lancer le projet 
 Simulateur android : ``react-native run-android``
-
-## Pour rafraichir sur le simulateur 
-R + R ou CMD + M
