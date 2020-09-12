@@ -1,20 +1,25 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Text, View, Image} from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Image, TouchableOpacity } from 'react-native';
 import { getImageFromApi } from '../API/TMDBApi';
 
 class FilmItem extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            
+
         }
     }
 
-    render(){
+    render() {
+        // ou const { film, displayFilmDetail } = this.props
         const film = this.props.film;
-        return(
-            <SafeAreaView style={styles.global}>
-                <Image source={{uri: getImageFromApi(film.poster_path)}} style={styles.img}/>
+        const displayFilmDetail = this.props.displayFilmDetail;
+        return (
+            <TouchableOpacity
+                style={styles.global}
+                onPress={() => displayFilmDetail(film.id)}
+            >
+                <Image source={{ uri: getImageFromApi(film.poster_path) }} style={styles.img} />
                 <View style={styles.viewDroite}>
                     <View style={styles.header}>
                         <Text style={styles.titleText}>{film.title}</Text>
@@ -27,8 +32,7 @@ class FilmItem extends React.Component {
                         <Text style={styles.date}>Sorti le {film.release_date}</Text>
                     </View>
                 </View>
-
-            </SafeAreaView>
+            </TouchableOpacity>
         )
     }
 }
@@ -43,7 +47,7 @@ const styles = StyleSheet.create({
         flex: 2,
         paddingRight: 5
     },
-    vote: {
+    vote: {
         flex: 1,
         fontWeight: 'bold',
         fontSize: 26,

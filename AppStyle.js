@@ -9,6 +9,15 @@ const s = StyleSheet.create({
         borderColor: '#000000',
         borderWidth: 1,
         paddingLeft: 5
+    },
+    load: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 100,
+        bottom: 0,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 

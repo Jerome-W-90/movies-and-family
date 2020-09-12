@@ -41,7 +41,7 @@ class Search extends React.Component {
     _displayLoading() {
         if (this.state.isLoading) {
             return (
-                <View style={style.load}>
+                <View style={s.load}>
                     <ActivityIndicator size='large' />
                 </View>
             )
@@ -60,6 +60,11 @@ class Search extends React.Component {
         })
     }
 
+    displayFilmDetail = (idFilm) => {
+        //console.log(idFilm);
+        this.props.navigation.navigate("FilmDetail", { idFilm: idFilm });
+    }
+
     render() {
         return (
             <SafeAreaView style={{ flex: 1 }}>
@@ -73,7 +78,7 @@ class Search extends React.Component {
                 <FlatList
                     data={this.state.films}
                     keyExtractor={(item) => item.id.toString()}
-                    renderItem={({ item }) => <FilmItem film={item} />}
+                    renderItem={({ item }) => <FilmItem film={item} displayFilmDetail={this.displayFilmDetail} />}
                     onEndReachedThreshold={0.5}
                     onEndReached={() => {
                         if (this.page < this.totalPages) {
@@ -86,17 +91,5 @@ class Search extends React.Component {
         )
     }
 }
-
-const style = new StyleSheet.create({
-    load: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 100,
-        bottom: 0,
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-})
 
 export default Search;
