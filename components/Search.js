@@ -25,7 +25,7 @@ class Search extends React.Component {
             getFilmsFromApi(this.searchText, this.page + 1)
                 .then(data => {
                     this.page = data.page
-                    this.totalPages = this.total_pages
+                    this.totalPages = data.total_pages
                     this.setState({
                         films: this.state.films.concat(data.results),
                         isLoading: false
