@@ -6,6 +6,7 @@ import { SafeAreaView, View, TextInput, Button, ActivityIndicator, FlatList } fr
 import FilmItem from './FilmItem';
 import { getFilmsFromApi } from '../API/TMDBApi';
 import s from '../AppStyle';
+import { connect } from 'react-redux';
 
 class Search extends React.Component {
     constructor(props) {
@@ -82,8 +83,15 @@ class Search extends React.Component {
 
                 <FlatList
                     data={this.state.films}
+                    extraData={this.props.favoritesFilm}
                     keyExtractor={(item) => item.id.toString()}
-                    renderItem={({ item }) => <FilmItem film={item} displayFilmDetail={this.displayFilmDetail} />}
+                    renderItem={({ item }) =>
+                        <FilmItem
+                            film={item}
+                            displayFilmDetail={this.displayFilmDetail}
+                            isFilmFavorite={(this.props.favoritesFilm.findIndex(film => film.id === item.id) !== -1) ? true : false}
+                        />
+                    }
                     onEndReachedThreshold={0.5}
                     onEndReached={() => {
                         if (this.page < this.totalPages) {
@@ -97,4 +105,10 @@ class Search extends React.Component {
     }
 }
 
-export default Search;
+// connect global state to Search props
+const mapStateToProps = (state) => {
+    return {
+        favoritesFilm: state.favoritesFilm
+    }
+}
+export default connect(mapStateToProps)(Search);

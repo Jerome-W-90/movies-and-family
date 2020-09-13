@@ -9,7 +9,7 @@ function toggleFavorite(state = initialState, action) {
 
     switch (action.type) {
         case "TOGGLE_FAVORITE":
-            const favoriteFilmIndex = state.favoritesFilm.findIndex(idem => item.id === action.value.id);
+            const favoriteFilmIndex = state.favoritesFilm.findIndex(item => item.id === action.value.id);
 
             if (favoriteFilmIndex !== -1) {
                 // Delete

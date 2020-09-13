@@ -94,6 +94,20 @@ const s = StyleSheet.create({
         marginLeft: 5,
         marginRight: 5,
         marginTop: 5,
+    },
+    favoriteContainer: {
+        alignItems: 'center'
+    },
+    favoriteImage: {
+        width: 24,
+        height: 24
+    },
+
+    // FilmItem.js
+    favoriteImageList: {
+        width: 24,
+        height: 24,
+        marginRight: 5
     }
 });
 

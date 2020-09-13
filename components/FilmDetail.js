@@ -2,7 +2,7 @@
  * Imports
  */
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, ScrollView, Image } from 'react-native';
+import { View, Text, ActivityIndicator, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { getFilmDetailsFromApi, getImageFromApi } from '../API/TMDBApi';
 import s from '../AppStyle';
 import moment from 'moment';
@@ -28,6 +28,36 @@ class FilmDetail extends Component {
             })
     }
 
+    /**
+     * put movie into favorite with redux
+     * STEPS : 
+     * 1/ click on favorite button
+     * 2/ create a type TOGGLE_FAVORITE and value with the current film
+     * 3/ share the const action to redux with dispatch function
+     * 4/ store TOGGLE_FAVORITE will receive this action and modify the state
+     **/
+
+    _toggleFavoris() {
+        const action = { type: "TOGGLE_FAVORITE", value: this.state.film };
+        this.props.dispatch(action);
+    }
+
+    _displayFavoriteImage() {
+        var sourceImage = require('../Images/NotInFavorite.png');
+
+        if (this.props.favoritesFilm.findIndex(item => item.id === this.state.film.id) !== -1) {
+            var sourceImage = require('../Images/InFavorite.png');
+        }
+
+        return (
+            <Image source={sourceImage} style={s.favoriteImage} />
+        )
+    }
+
+    /*componentDidUpdate() {
+        console.log(this.props.favoritesFilm)
+    }*/
+
     _displayFilm() {
         const film = this.state.film;
         if (film != undefined) {
@@ -38,6 +68,12 @@ class FilmDetail extends Component {
                         source={{ uri: getImageFromApi(film.backdrop_path) }}
                     />
                     <Text style={s.titleText}>{film.title}</Text>
+                    <TouchableOpacity
+                        style={s.favoriteContainer}
+                        onPress={() => this._toggleFavoris()}
+                    >
+                        {this._displayFavoriteImage()}
+                    </TouchableOpacity>
                     <Text style={s.descriptionText}>{film.overview}</Text>
                     <Text style={s.defaultText}>Sorti le {moment(new Date(film.release_date)).format('DD/MM/YYYY')}</Text>
                     <Text style={s.defaultText}>Note : {film.vote_average} / 10</Text>
