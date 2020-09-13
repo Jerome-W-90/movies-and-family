@@ -1,9 +1,10 @@
-import React from 'react'
-import { SafeAreaView, View, TextInput, StyleSheet, Button, ActivityIndicator, FlatList } from 'react-native'
+/**
+ * Imports
+ */
+import React from 'react';
+import { SafeAreaView, View, TextInput, Button, ActivityIndicator, FlatList } from 'react-native';
 import FilmItem from './FilmItem';
 import { getFilmsFromApi } from '../API/TMDBApi';
-
-// Import du style
 import s from '../AppStyle';
 
 class Search extends React.Component {
@@ -15,29 +16,33 @@ class Search extends React.Component {
             films: [],
             isLoading: false
         }
-        this.searchText = ""
+        this.searchText = "";
     }
 
     _loadFilm() {
+        // If there is a query
         if (this.searchText.length > 0) {
             this.setState({ isLoading: true });
 
+            // Make a call to the API
             getFilmsFromApi(this.searchText, this.page + 1)
                 .then(data => {
                     this.page = data.page
                     this.totalPages = data.total_pages
                     this.setState({
-                        films: this.state.films.concat(data.results),
+                        films: this.state.films.concat(data.results), // Concat new results with old during scroll
                         isLoading: false
                     })
                 })
         }
     }
 
+    // onChangeText on the search bar
     _searchTextInputChanged(text) {
         this.searchText = text;
     }
 
+    // display the loader when films are loading
     _displayLoading() {
         if (this.state.isLoading) {
             return (
@@ -51,18 +56,18 @@ class Search extends React.Component {
     _searchFilm() {
         this.page = 0;
         this.totalPages = 0;
-        // setState est asynchrone
+        // setState is asynchron
         this.setState({
-            films: []
+            films: [] // reset all movies to have new results
         }, () => {
             console.log('page: ' + this.page, 'totalPages: ' + this.totalPages, 'nbFilms: ' + this.state.films.length)
-            this._loadFilm() // permet de lancer _loadFilm uniquement quand setState a terminé
+            this._loadFilm() // _loadFilm is started when setState is done
         })
     }
 
     displayFilmDetail = (idFilm) => {
         //console.log(idFilm);
-        this.props.navigation.navigate("FilmDetail", { idFilm: idFilm });
+        this.props.navigation.navigate("FilmDetail", { idFilm: idFilm }); // send idFilm to the new view FilmDetail
     }
 
     render() {

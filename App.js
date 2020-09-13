@@ -6,20 +6,13 @@
  * @flow
  */
 
+/**
+ * Imports
+ */
 import React from 'react';
 import Navigation from './ Navigation/Navigation';
 
-// Import du style
-import s from './AppStyle';
-
 class App extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-
-        };
-    }
-
     render() {
         return (
             <>

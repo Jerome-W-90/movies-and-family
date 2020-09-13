@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+/**
+ * Imports
+ */
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Search from '../components/Search';
 import FilmDetail from '../components/FilmDetail';
 
+// https://reactnavigation.org/docs/stack-navigator/ (V5)
 const Stack = createStackNavigator();
 
 function MyNavigation() {
