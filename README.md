@@ -14,3 +14,7 @@ npm install
 ```
 react-native run-android
 ```
+-Lancer le debugger react-devtools
+```
+react-devtools
+```

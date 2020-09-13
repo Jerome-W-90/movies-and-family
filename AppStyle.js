@@ -132,6 +132,9 @@ const s = StyleSheet.create({
         width: 24,
         height: 24
     },
+    viewAvatarContainer: {
+        alignItems: 'center'
+    },
 
     // FilmItem.js
     favoriteImageList: {
