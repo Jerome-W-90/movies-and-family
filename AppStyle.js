@@ -102,6 +102,36 @@ const s = StyleSheet.create({
         width: 24,
         height: 24
     },
+    buttonShareContainerAndroid: {
+        position: 'absolute',
+        width: 55,
+        height: 55,
+        right: 30,
+        bottom: 30,
+        borderRadius: 30,
+        backgroundColor: '#e91e63',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    buttonShareAndroid: {
+        width: 24,
+        height: 24
+    },
+    buttonShareContainerIos: {
+        position: 'absolute',
+        width: 50,
+        height: 50,
+        right: 30,
+        bottom: 30,
+        borderRadius: 30,
+        backgroundColor: 'green',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    buttonShareIos: {
+        width: 24,
+        height: 24
+    },
 
     // FilmItem.js
     favoriteImageList: {

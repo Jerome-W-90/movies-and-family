@@ -2,7 +2,7 @@
  * Imports
  */
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { Share, View, Text, ActivityIndicator, ScrollView, Image, TouchableOpacity, Platform } from 'react-native';
 import { getFilmDetailsFromApi, getImageFromApi } from '../API/TMDBApi';
 import s from '../AppStyle';
 import moment from 'moment';
@@ -36,7 +36,6 @@ class FilmDetail extends Component {
      * 3/ share the const action to redux with dispatch function
      * 4/ store TOGGLE_FAVORITE will receive this action and modify the state
      **/
-
     _toggleFavoris() {
         const action = { type: "TOGGLE_FAVORITE", value: this.state.film };
         this.props.dispatch(action);
@@ -103,6 +102,46 @@ class FilmDetail extends Component {
         }
     }
 
+    _shareFilm() {
+        const film = this.state.film;
+        Share.share({
+            title: film.title,
+            message: film.overview
+        })
+    }
+
+    _displayFloatingActionButton() {
+        const film = this.state.film;
+
+        if (film != undefined && Platform.OS === "android") {
+            return (
+                <TouchableOpacity
+                    style={s.buttonShareContainerAndroid}
+                    onPress={() => this._shareFilm()}
+                >
+                    <Image
+                        style={s.buttonShareAndroid}
+                        source={require('../Images/share.png')}
+                    />
+                </TouchableOpacity>
+            )
+        }
+
+        if (film != undefined && Platform.OS === "ios") {
+            return (
+                <TouchableOpacity
+                    style={s.buttonShareContainerIos}
+                    onPress={this._shareFilm()}
+                >
+                    <Image
+                        style={s.buttonShareIos}
+                        source={require('../Images/share.png')}
+                    />
+                </TouchableOpacity>
+            )
+        }
+    }
+
     render() {
         //console.log(this.props); // favoritesFilm appear from redux
         //console.log(this.props.route.params.idFilm);
@@ -110,6 +149,7 @@ class FilmDetail extends Component {
             <View style={s.filmDetailContainer}>
                 {this._displayFilm()}
                 {this._displayLoading()}
+                {this._displayFloatingActionButton()}
             </View>
         );
     }
