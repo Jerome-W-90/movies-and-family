@@ -21,7 +21,7 @@ class FilmItem extends React.Component {
                 <Image source={{ uri: getImageFromApi(film.poster_path) }} style={s.img} />
                 <View style={s.viewDroite}>
                     <View style={s.header}>
-                        <Text style={s.titleText}>{film.title}</Text>
+                        <Text style={s.titleTextList}>{film.title}</Text>
                         <Text style={s.vote}>{film.vote_average}</Text>
                     </View>
                     <View style={s.description}>

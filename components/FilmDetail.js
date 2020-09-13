@@ -7,6 +7,7 @@ import { getFilmDetailsFromApi, getImageFromApi } from '../API/TMDBApi';
 import s from '../AppStyle';
 import moment from 'moment';
 import numeral from 'numeral';
+import { connect } from 'react-redux';
 
 class FilmDetail extends Component {
     constructor(props) {
@@ -42,7 +43,7 @@ class FilmDetail extends Component {
                     <Text style={s.defaultText}>Note : {film.vote_average} / 10</Text>
                     <Text style={s.defaultText}>Nombre de votes : {film.vote_count}</Text>
                     <Text style={s.defaultText}>Budget : {numeral(film.budget).format('0,0[.]00 $')}</Text>
-                    <Text style={s.defaultText}>Genre(s) : {film.genres.map(function (genre) {
+                    <Text style={s.defaultText}>Genre(s) : {film.genres.map(function (genre) { // ex: Science-fiction / Action / Horreur
                         return genre.name;
                     }).join(" / ")}
                     </Text>
@@ -67,6 +68,7 @@ class FilmDetail extends Component {
     }
 
     render() {
+        //console.log(this.props); // favoritesFilm appear from redux
         //console.log(this.props.route.params.idFilm);
         return (
             <View style={s.filmDetailContainer}>
@@ -77,4 +79,10 @@ class FilmDetail extends Component {
     }
 }
 
-export default FilmDetail;
+// connect global state to FilmDetail props
+const mapStateToProps = (state) => {
+    return {
+        favoritesFilm: state.favoritesFilm
+    }
+}
+export default connect(mapStateToProps)(FilmDetail);

@@ -21,8 +21,10 @@ const s = StyleSheet.create({
         flexDirection: 'row',
         flex: 1
     },
-    titleText: {
+    titleTextList: {
         flex: 2,
+        fontWeight: 'bold',
+        fontSize: 18,
         paddingRight: 5
     },
     vote: {
