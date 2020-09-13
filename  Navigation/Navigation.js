@@ -16,13 +16,30 @@ const Stack = createStackNavigator();
 // https://reactnavigation.org/docs/bottom-tab-navigator (V5)
 const Tab = createBottomTabNavigator();
 
-function MyNavigation() {
+function MySearchNavigation() {
     return (
         <Stack.Navigator>
             <Stack.Screen
                 name="Search"
                 component={Search}
                 options={{ title: 'Rechercher' }}
+            />
+            <Stack.Screen
+                name="FilmDetail"
+                component={FilmDetail}
+                options={{ title: 'FilmDetail' }}
+            />
+        </Stack.Navigator>
+    )
+}
+
+function MyFavoritesNavigation() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="MyFavorites"
+                component={MyFavorites}
+                options={{ title: 'MyFavorites' }}
             />
             <Stack.Screen
                 name="FilmDetail"
@@ -48,8 +65,8 @@ const Navigation = () => {
                         }
                     },
                 })}>
-                <Tab.Screen name="Rechercher" component={MyNavigation} />
-                <Tab.Screen name="Mes favoris" component={MyFavorites} />
+                <Tab.Screen name="Rechercher" component={MySearchNavigation} />
+                <Tab.Screen name="Mes favoris" component={MyFavoritesNavigation} />
             </Tab.Navigator>
         </NavigationContainer>
     );

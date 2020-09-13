@@ -19,7 +19,7 @@ class FilmItem extends React.Component {
     render() {
         // Or const { film, displayFilmDetail } = this.props;
         const film = this.props.film;
-        const displayFilmDetail = this.props.displayFilmDetail;
+        const displayFilmDetail = this.props._displayFilmDetail;
 
         return (
             // TouchableOpacity to allow click on this view

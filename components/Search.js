@@ -17,6 +17,8 @@ class Search extends React.Component {
             films: [],
             isLoading: false
         }
+
+        this._loadFilm = this._loadFilm.bind(this); // the bind avoid to keep this state in callback
     }
 
     _loadFilm() {
@@ -54,6 +56,11 @@ class Search extends React.Component {
         })
     }
 
+    _displayDetailForFilm = (idFilm) => {
+        //console.log("Display film with id " + idFilm)
+        this.props.navigation.navigate("FilmDetail", { idFilm: idFilm })
+    }
+
     // display the loader when films are loading
     _displayLoading() {
         if (this.state.isLoading) {
@@ -73,13 +80,14 @@ class Search extends React.Component {
                     style={s.textInput}
                     onSubmitEditing={() => this._searchFilm()}
                     placeholder="Titre du film..." />
-                <Button onPress={() => this._searchFilm()} title="Rechercher" onPress={() => this._loadFilm()} />
+                <Button onPress={() => this._searchFilm()} title="Rechercher" />
                 <FilmList
                     films={this.state.films}
                     navigation={this.props.navigation}
                     _loadFilm={this._loadFilm}
                     page={this.page}
                     totalPages={this.totalPages}
+                    favoriteList={false}
                 />
                 {this._displayLoading()}
             </SafeAreaView>

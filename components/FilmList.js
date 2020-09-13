@@ -12,6 +12,7 @@ class FilmList extends Component {
         }
     }
 
+    // this ES6 function avoid to bind automaticaly concerned the current context FilmList
     _displayFilmDetail = (idFilm) => {
         //console.log(idFilm);
         this.props.navigation.navigate("FilmDetail", { idFilm: idFilm }); // send idFilm to the new view FilmDetail
@@ -26,13 +27,13 @@ class FilmList extends Component {
                 renderItem={({ item }) =>
                     <FilmItem
                         film={item}
-                        displayFilmDetail={this._displayFilmDetail}
+                        _displayFilmDetail={this._displayFilmDetail}
                         isFilmFavorite={(this.props.favoritesFilm.findIndex(film => film.id === item.id) !== -1) ? true : false}
                     />
                 }
                 onEndReachedThreshold={0.5}
                 onEndReached={() => {
-                    if (this.props.page < this.props.totalPages) {
+                    if (!this.props.favoriteList && this.props.page < this.props.totalPages) {
                         this.props._loadFilm()
                     }
                 }}
