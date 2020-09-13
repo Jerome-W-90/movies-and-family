@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import {
-    Text,
-    View
-} from 'react-native';
 import FilmList from '../components/FilmList';
 import { connect } from 'react-redux';
+import FadeIn from '../Animations/FadeIn';
 
 class MyFavorites extends Component {
     render() {
         return (
-            <FilmList
-                films={this.props.favoritesFilm}
-                navigation={this.props.navigation}
-                favoriteList={true}
-            />
+            <FadeIn>
+                <FilmList
+                    films={this.props.favoritesFilm}
+                    navigation={this.props.navigation}
+                    favoriteList={true}
+                />
+            </FadeIn>
         );
     }
 }
