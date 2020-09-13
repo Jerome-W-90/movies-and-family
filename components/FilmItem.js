@@ -27,7 +27,7 @@ class FilmItem extends React.Component {
                     <View style={s.description}>
                         <Text numberOfLines={6}>{film.overview}</Text>
                     </View>
-                    <View style={s.date_container}>
+                    <View style={s.dateContainer}>
                         <Text style={s.date}>Sorti le {film.release_date}</Text>
                     </View>
                 </View>

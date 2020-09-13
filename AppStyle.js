@@ -4,7 +4,7 @@
 import { StyleSheet } from 'react-native'
 
 const s = StyleSheet.create({
-    // Search.js
+    // Search.js and FilmDetail.js
     load: {
         position: 'absolute',
         left: 0,
@@ -55,8 +55,43 @@ const s = StyleSheet.create({
         marginTop: 30,
         textAlign: 'right'
     },
-    date_container: {
+    dateContainer: {
         flex: 1
+    },
+
+    // FilmDetail.js
+    filmDetailContainer: {
+        flex: 1
+    },
+    scrollviewContainer: {
+        flex: 1
+    },
+    image: {
+        height: 169,
+        margin: 5
+    },
+    titleText: {
+        fontWeight: 'bold',
+        fontSize: 35,
+        flex: 1,
+        flexWrap: 'wrap',
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 10,
+        marginBottom: 10,
+        color: '#000000',
+        textAlign: 'center'
+    },
+    descriptionText: {
+        fontStyle: 'italic',
+        color: '#666666',
+        margin: 5,
+        marginBottom: 15
+    },
+    defaultText: {
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 5,
     }
 });
 
