@@ -27,7 +27,7 @@ class MyFavorites extends Component {
 
 const mapStateToProps = state => {
     return {
-        favoritesFilm: state.favoritesFilm
+        favoritesFilm: state.toggleFavorite.favoritesFilm
     }
 }
 

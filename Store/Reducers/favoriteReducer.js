@@ -1,10 +1,8 @@
 const initialState = { favoritesFilm: [] }
 
-// TODO : historique de navigation (https://openclassrooms.com/fr/courses/4902061-developpez-une-application-mobile-react-native/5400081-construisez-une-action-sur-redux)
-
 /**
  * the state must always remain immutable !!
- * bad practice : state.profil = action.value 
+ * bad practice : state.profil = action.value
  **/
 function toggleFavorite(state = initialState, action) {
     let nextText;

@@ -30,7 +30,7 @@ class FilmDetail extends Component {
 
     /**
      * put movie into favorite with redux
-     * STEPS : 
+     * STEPS :
      * 1/ click on favorite button
      * 2/ create a type TOGGLE_FAVORITE and value with the current film
      * 3/ share the const action to redux with dispatch function
@@ -158,7 +158,7 @@ class FilmDetail extends Component {
 // connect global state to FilmDetail props
 const mapStateToProps = (state) => {
     return {
-        favoritesFilm: state.favoritesFilm
+        favoritesFilm: state.toggleFavorite.favoritesFilm
     }
 }
 export default connect(mapStateToProps)(FilmDetail);

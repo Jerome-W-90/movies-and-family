@@ -6,7 +6,7 @@ import { Animated, Dimensions } from 'react-native'
 
 class FadeIn extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             positionLeft: new Animated.Value(Dimensions.get('window').width) // the width of screen's mobile
         }
