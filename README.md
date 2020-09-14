@@ -11,6 +11,8 @@
 ```
 npm install
 ```
+-Indiquer API_TOKEN de [The Movie Database](https://developers.themoviedb.org/3/getting-started/introduction) dans le fichier API/TMDBApi.js
+
 -Simulateur android : 
 ```
 react-native run-android
@@ -25,7 +27,6 @@ react-devtools
 ```
 keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
 ```
-
 -Pour builder et générer un APK (à partir de la racine du projet)
 ```
 cd android && ./gradlew assembleRelease
