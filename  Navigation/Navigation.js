@@ -9,6 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Search from '../components/Search';
 import FilmDetail from '../components/FilmDetail';
 import MyFavorites from '../components/MyFavorites';
+import News from '../components/News';
 
 // https://reactnavigation.org/docs/stack-navigator/ (V5)
 const Stack = createStackNavigator();
@@ -50,6 +51,23 @@ function MyFavoritesNavigation() {
     )
 }
 
+function NewsNavigation() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="News"
+                component={News}
+                options={{ title: 'News' }}
+            />
+            <Stack.Screen
+                name="FilmDetail"
+                component={FilmDetail}
+                options={{ title: 'FilmDetail' }}
+            />
+        </Stack.Navigator>
+    )
+}
+
 const Navigation = () => {
     return (
         <NavigationContainer>
@@ -61,12 +79,14 @@ const Navigation = () => {
                                 return <Image source={require("../Images/search.png")} />
                             case "Mes favoris":
                                 return <Image source={require("../Images/InFavorite.png")} />
-
+                            case "News":
+                                return <Image source={require("../Images/news.png")} />
                         }
                     },
                 })}>
                 <Tab.Screen name="Rechercher" component={MySearchNavigation} />
                 <Tab.Screen name="Mes favoris" component={MyFavoritesNavigation} />
+                <Tab.Screen name="News" component={NewsNavigation} />
             </Tab.Navigator>
         </NavigationContainer>
     );
