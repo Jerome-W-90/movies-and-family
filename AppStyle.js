@@ -14,6 +14,15 @@ const s = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    buttonSearch: {
+        backgroundColor: "black",
+        height: 30,
+        justifyContent: 'center'
+    },
+    textButtonSearch: {
+        color: "white",
+        textAlign: 'center'
+    },
 
     // FilmItem.js
     global: {

@@ -23,12 +23,12 @@ function MySearchNavigation() {
             <Stack.Screen
                 name="Search"
                 component={Search}
-                options={{ title: 'Rechercher' }}
+                options={{ title: 'Rechercher un film' }}
             />
             <Stack.Screen
                 name="FilmDetail"
                 component={FilmDetail}
-                options={{ title: 'FilmDetail' }}
+                options={{ title: 'Détail du film' }}
             />
         </Stack.Navigator>
     )
@@ -40,12 +40,12 @@ function MyFavoritesNavigation() {
             <Stack.Screen
                 name="MyFavorites"
                 component={MyFavorites}
-                options={{ title: 'MyFavorites' }}
+                options={{ title: 'Mes favoris' }}
             />
             <Stack.Screen
                 name="FilmDetail"
                 component={FilmDetail}
-                options={{ title: 'FilmDetail' }}
+                options={{ title: 'Détail du film' }}
             />
         </Stack.Navigator>
     )
@@ -57,12 +57,12 @@ function NewsNavigation() {
             <Stack.Screen
                 name="News"
                 component={News}
-                options={{ title: 'News' }}
+                options={{ title: 'Nouveautés et meilleures notes' }}
             />
             <Stack.Screen
                 name="FilmDetail"
                 component={FilmDetail}
-                options={{ title: 'FilmDetail' }}
+                options={{ title: 'Détail du film' }}
             />
         </Stack.Navigator>
     )

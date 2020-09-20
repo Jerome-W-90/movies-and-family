@@ -2,7 +2,7 @@
  * Imports
  */
 import React from 'react';
-import { SafeAreaView, View, TextInput, Button, ActivityIndicator, FlatList } from 'react-native';
+import {SafeAreaView, View, TextInput, Button, ActivityIndicator, FlatList, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import { getFilmsFromApi } from '../API/TMDBApi';
 import s from '../AppStyle';
 import FilmList from '../components/FilmList';
@@ -79,8 +79,10 @@ class Search extends React.Component {
                     onChangeText={(text) => this._searchTextInputChanged(text)}
                     style={s.textInput}
                     onSubmitEditing={() => this._searchFilm()}
-                    placeholder="Titre du film..." />
-                <Button onPress={() => this._searchFilm()} title="Rechercher" />
+                    placeholder="Ex : star wars, jurassic park, harry potter..." />
+                <TouchableOpacity style={s.buttonSearch} onPress={() => this._searchFilm()}>
+                    <Text style={s.textButtonSearch}>Rechercher</Text>
+                </TouchableOpacity>
                 <FilmList
                     films={this.state.films}
                     navigation={this.props.navigation}
