@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.tets"
+        applicationId "com.movies_and_family"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
